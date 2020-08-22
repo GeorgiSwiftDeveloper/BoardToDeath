@@ -7,7 +7,6 @@
 //
 
 import XCTest
-
 class BoardToDeathUITests: XCTestCase {
     
     
@@ -17,6 +16,7 @@ class BoardToDeathUITests: XCTestCase {
     override func setUpWithError() throws {
        app = XCUIApplication()
         continueAfterFailure = false
+        app.launchArguments.append("--uitesting")
 
     }
 
@@ -33,6 +33,32 @@ class BoardToDeathUITests: XCTestCase {
         
         XCTAssertTrue(app.staticTexts["Custom Puppy Content"].exists)
     }
+    
+    
+    
+    func testOnboarding_WhenFinished_OnboardVCDismisses() {
+        app.launch()
+        
+        XCTAssertTrue(app.isDisplayingOnboarding)
+        
+        app.swipeLeft()
+        app.swipeLeft()
+        
+        
+        
+        app.buttons["Done"].tap()
+        
+        XCTAssertFalse(app.isDisplayingOnboarding)
+        
+    }
 
+    
   
+}
+
+
+extension XCUIApplication {
+    var isDisplayingOnboarding: Bool {
+        return otherElements["onboardingView"].exists
+    }
 }
