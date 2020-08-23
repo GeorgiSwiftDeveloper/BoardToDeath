@@ -66,20 +66,20 @@ class BoardToDeathUITests: XCTestCase {
         XCTAssertTrue(app.isDisplayingAlertVC, "Alert VC shoud show when onboarding dismisses")
     }
     
-//    func testEmailInput_WhenGivenEmail(){
-//        app.launch()
-//        
-//        app.swipeLeft()
-//        app.swipeLeft()
-//        
-//        app.buttons["Done"].tap()
-//        
-//        let emailTextField = app.textFields["Email"]
-//        emailTextField.tap()
-//        emailTextField.typeText("iOSDeveloper")
-//        
-//        XCTAssertTrue(emailTextField.staticTexts["iOSDeveloper"].exists)
-//    }
+    func testEmailInput_WhenGivenEmail(){
+        app.launch()
+        
+        app.swipeLeft()
+        app.swipeLeft()
+        
+        app.buttons["Done"].tap()
+        
+        let emailTextField = app.textFields["Email"]
+        emailTextField.tap()
+        emailTextField.typeText("iOSDeveloper")
+        
+        XCTAssertTrue(app.textFields["iOSDeveloper"].exists)
+    }
     
     
 }
