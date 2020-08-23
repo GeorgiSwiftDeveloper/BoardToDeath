@@ -82,6 +82,22 @@ class BoardToDeathUITests: XCTestCase {
     }
     
     
+    func testPasstwordInput_WhenGivenPassword(){
+           app.launch()
+           
+           app.swipeLeft()
+           app.swipeLeft()
+           
+           app.buttons["Done"].tap()
+           
+           let passwordTextField = app.textFields["Password"]
+           passwordTextField.tap()
+           passwordTextField.typeText("swiftDev")
+           
+           XCTAssertTrue(app.textFields["swiftDev"].exists)
+       }
+    
+    
 }
 
 
