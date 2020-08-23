@@ -98,6 +98,27 @@ class BoardToDeathUITests: XCTestCase {
        }
     
     
+    func testImageDownload_WgenDownloadComlete_CaptiionLabelShowing(){
+        app.launch()
+        
+        let imageCaption  = app.staticTexts["What a beautiful image!"]
+        let exists = NSPredicate(format:"exists == true")
+        expectation(for: exists, evaluatedWith: imageCaption, handler: nil)
+        
+        app.swipeLeft()
+        app.swipeLeft()
+        
+        app.buttons["Done"].tap()
+        
+        app.alerts["You did it!"].buttons["Awesome!"].tap()
+        
+        app.buttons["Load Image"].tap()
+        
+        waitForExpectations(timeout: 5, handler: nil)
+        
+        XCTAssert(imageCaption.exists)
+    }
+    
 }
 
 
