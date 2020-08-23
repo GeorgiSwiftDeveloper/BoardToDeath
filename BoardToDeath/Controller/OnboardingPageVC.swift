@@ -15,11 +15,6 @@ class OnboardingPageVC: UIViewController {
     @IBAction func doneBtnWasPressed(_ sender: Any) {
         userDefaults.onboardingCompleted = true
         dismiss(animated: true)
-//        let alert = UIAlertController(title: "You did it!", message: "Congratulation", preferredStyle: .alert)
-//        let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-//        alert.addAction(alertAction)
-//        present(alert, animated: true, completion: nil)
-//        alert.view.accessibilityIdentifier = "Alert"
     }
     
 }

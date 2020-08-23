@@ -7,19 +7,20 @@
 //
 
 import XCTest
+@testable import BoardToDeath
 class BoardToDeathUITests: XCTestCase {
     
     
     var app: XCUIApplication!
     
-
+    
     override func setUpWithError() throws {
-       app = XCUIApplication()
+        app = XCUIApplication()
         continueAfterFailure = false
         app.launchArguments.append("--uitesting")
-
+        
     }
-
+    
     override func tearDownWithError() throws {
         app = nil
     }
@@ -33,6 +34,8 @@ class BoardToDeathUITests: XCTestCase {
         
         XCTAssertTrue(app.staticTexts["Custom Puppy Content"].exists)
     }
+    
+    
     
     
     
@@ -51,14 +54,43 @@ class BoardToDeathUITests: XCTestCase {
         XCTAssertFalse(app.isDisplayingOnboarding)
         
     }
-
     
-  
+    func testInterfaceVC_AlertViewShows(){
+        app.launch()
+        
+        app.swipeLeft()
+        app.swipeLeft()
+        
+        app.buttons["Done"].tap()
+        
+        XCTAssertTrue(app.isDisplayingAlertVC, "Alert VC shoud show when onboarding dismisses")
+    }
+    
+//    func testEmailInput_WhenGivenEmail(){
+//        app.launch()
+//        
+//        app.swipeLeft()
+//        app.swipeLeft()
+//        
+//        app.buttons["Done"].tap()
+//        
+//        let emailTextField = app.textFields["Email"]
+//        emailTextField.tap()
+//        emailTextField.typeText("iOSDeveloper")
+//        
+//        XCTAssertTrue(emailTextField.staticTexts["iOSDeveloper"].exists)
+//    }
+    
+    
 }
 
 
 extension XCUIApplication {
     var isDisplayingOnboarding: Bool {
         return otherElements["onboardingView"].exists
+    }
+    
+    var isDisplayingAlertVC: Bool {
+        return alerts["You did it!"].exists
     }
 }
